@@ -68,21 +68,17 @@ public class Nations extends JavaPlugin{
 					}
 				}
 				else if(args[0].equalsIgnoreCase("list")){
-					int counter = 0;
 					player.sendMessage("----" + ChatColor.GREEN + " Active nations " + ChatColor.WHITE + "----");
+					for(int counter = 0; counter <= 3; counter++){
 					player.sendMessage(ChatColor.AQUA + Nation[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + Nation[counter] + ChatColor.GREEN + " for more information.");
-					counter++;
-					player.sendMessage(ChatColor.AQUA + Nation[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + Nation[counter] + ChatColor.GREEN + " for more information.");
-					counter++;
-					player.sendMessage(ChatColor.AQUA + Nation[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + Nation[counter] + ChatColor.GREEN + " for more information.");
-					counter++;
-					player.sendMessage(ChatColor.AQUA + Nation[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + Nation[counter] + ChatColor.GREEN + " for more information.");
+					}
 				}
 				else if(args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("join")){
 					player.sendMessage(ChatColor.RED + "Invalid arguments, please choose a nation.");
 				}
 			}
 			else if(args.length == 2){
+				//                     '/nation info' commands
 				if(args[0].equalsIgnoreCase("info") && args[1].equalsIgnoreCase(Nation[0])){
 					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(England) " + ChatColor.WHITE + "----");
 					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on England here...>");
@@ -102,6 +98,10 @@ public class Nations extends JavaPlugin{
 					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(France) " + ChatColor.WHITE + "----");
 					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on France here...>");
 					player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on French traits here...>");
+				}
+				//					'/nation join' commands
+				else if(args[0].equalsIgnoreCase("join") && args[1].equalsIgnoreCase(Nation[0])){
+					player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "England" + ChatColor.GREEN + "!");
 				}
 			}
 		}
