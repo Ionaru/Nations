@@ -34,7 +34,7 @@ public class Nations extends JavaPlugin{
 		if(commandLabel.equalsIgnoreCase("nation") || commandLabel.equalsIgnoreCase("n") || commandLabel.equalsIgnoreCase("nations")){
 			if(args.length == 0){
 				if(player.isOp()){
-					player.sendMessage("----" + ChatColor.GREEN + " Nations Help (Admin) " + ChatColor.WHITE + "----");
+					player.sendMessage("----" + ChatColor.GREEN + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 					player.sendMessage(ChatColor.AQUA + "Accepted command aliases: /n, /nation and /nations");
 					player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 					player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
@@ -52,7 +52,7 @@ public class Nations extends JavaPlugin{
 			else if(args.length == 1){
 				if(args[0].equals("?") || args[0].equalsIgnoreCase("help")){
 					if(player.isOp()){
-						player.sendMessage("----" + ChatColor.GREEN + " Nations help (Admin) " + ChatColor.WHITE + "----");
+						player.sendMessage("----" + ChatColor.GREEN + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 						player.sendMessage(ChatColor.AQUA + "Accepted command aliases: /n, /nation and /nations");
 						player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 						player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
@@ -79,25 +79,30 @@ public class Nations extends JavaPlugin{
 			}
 			else if(args.length == 2){
 				//                     '/nation info' commands
-				if(args[0].equalsIgnoreCase("info") && args[1].equalsIgnoreCase(Nation[0])){
-					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(England) " + ChatColor.WHITE + "----");
-					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on England here...>");
-					player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on English traits here...>");
-				}
-				else if(args[0].equalsIgnoreCase("info") && args[1].equalsIgnoreCase(Nation[1])){
-					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(The Netherlands) " + ChatColor.WHITE + "----");
-					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on The Netherlands here...>");
-					player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Dutch traits here...>");
+				if(args[0].equalsIgnoreCase("info")){
+					if(args[1].equalsIgnoreCase(Nation[0])){
+						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "England" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
+						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on England here...>");
+						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on English traits here...>");
 					}
-				else if(args[0].equalsIgnoreCase("info") && args[1].equalsIgnoreCase(Nation[2])){
-					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(Spain) " + ChatColor.WHITE + "----");
-					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on Spain here...>");
-					player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Spanish traits here...>");
-				}
-				else if(args[0].equalsIgnoreCase("info") && args[1].equalsIgnoreCase(Nation[3])){
-					player.sendMessage("----" + ChatColor.GREEN + " Nation info " + ChatColor.AQUA + "(France) " + ChatColor.WHITE + "----");
-					player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on France here...>");
-					player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on French traits here...>");
+					else if(args[1].equalsIgnoreCase(Nation[1])){
+						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "The Netherlands" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
+						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on The Netherlands here...>");
+						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Dutch traits here...>");
+					}
+					else if(args[1].equalsIgnoreCase(Nation[2])){
+						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "Spain" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
+						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on Spain here...>");
+						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Spanish traits here...>");
+					}
+					else if(args[1].equalsIgnoreCase(Nation[3])){
+						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "France" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
+						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on France here...>");
+						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on French traits here...>");
+					}
+					else{
+						player.sendMessage(ChatColor.RED + "Invalid arguments, please choose a nation.");
+					}
 				}
 				//					'/nation join' commands
 				else if(args[0].equalsIgnoreCase("join") && args[1].equalsIgnoreCase(Nation[0])){
