@@ -1,0 +1,12 @@
+name: Nations
+main: me.Ionaru.Nations.Nations
+version: DEV-0.01
+description: >
+             Nations plugin
+commands:
+    n:
+        description: Nations!
+    nation:
+        description: Nations!
+    nations:
+        description: Nations!

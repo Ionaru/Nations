@@ -7,12 +7,25 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Nations extends JavaPlugin{
+public class Nations extends JavaPlugin implements Listener {
 	public static Nations plugin;
 	public final Logger logger = Logger.getLogger("Minecraft");
+	 // console coloring made easy
+	// example colored line: getLogger().info(ANSI_YELLOW + "TEXT" + ANSI_RESET);
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+	public static final String ANSI_BOLD = "\u001B[1m";
 	
 	@EventHandler
 	public void onDisable() {
@@ -21,21 +34,30 @@ public class Nations extends JavaPlugin{
 	}
 	@EventHandler
 	public void onEnable() {
-		PluginDescriptionFile pdfFile = this.getDescription();
-		this.logger.info(pdfFile.getName() + " " + pdfFile.getVersion()
-				+ " enabled");
+		this.logger.info(ANSI_CYAN + "Initializing Nations plugin." + ANSI_RESET);
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+		if(getConfig().getString("plugin_enabled") == "false"){
+			this.logger.info(ANSI_RED + "Plugin_enabled is set to false in Nations config. Disabling plugin!" + ANSI_RESET);
+			this.getServer().getPluginManager().disablePlugin(this);
+		}
+		else
+		{
+			//PluginDescriptionFile pdfFile = this.getDescription();
+			//this.logger.info(pdfFile.getName() + " " + pdfFile.getVersion() + " enabled");
+			this.logger.info(ANSI_GREEN + "Nations plugin enabled!" + ANSI_RESET);
+		}
 	}
 	
 	String Nation[] = {"England","Netherlands","Spain","France"};
 	
-	public boolean onCommand(CommandSender sender, Command cmd,
-			String commandLabel, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		Player player = (Player) sender;
 		if(commandLabel.equalsIgnoreCase("nation") || commandLabel.equalsIgnoreCase("n") || commandLabel.equalsIgnoreCase("nations")){
 			if(args.length == 0){
 				if(player.isOp()){
 					player.sendMessage("----" + ChatColor.GREEN + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
-					player.sendMessage(ChatColor.AQUA + "Accepted command aliases: /n, /nation and /nations");
+					player.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
 					player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 					player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
 					player.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
@@ -43,6 +65,7 @@ public class Nations extends JavaPlugin{
 				}
 				else{
 					player.sendMessage("----" + ChatColor.GREEN + "Nations Help" + ChatColor.WHITE + "----");
+					player.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
 					player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 					player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
 					player.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
@@ -53,7 +76,7 @@ public class Nations extends JavaPlugin{
 				if(args[0].equals("?") || args[0].equalsIgnoreCase("help")){
 					if(player.isOp()){
 						player.sendMessage("----" + ChatColor.GREEN + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
-						player.sendMessage(ChatColor.AQUA + "Accepted command aliases: /n, /nation and /nations");
+						player.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
 						player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 						player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
 						player.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
@@ -61,6 +84,7 @@ public class Nations extends JavaPlugin{
 					}
 					else{
 						player.sendMessage("----" + ChatColor.GREEN + " Nations Help " + ChatColor.WHITE + "----");
+						player.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
 						player.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
 						player.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
 						player.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
@@ -105,8 +129,22 @@ public class Nations extends JavaPlugin{
 					}
 				}
 				//					'/nation join' commands
-				else if(args[0].equalsIgnoreCase("join") && args[1].equalsIgnoreCase(Nation[0])){
-					player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "England" + ChatColor.GREEN + "!");
+				else if(args[0].equalsIgnoreCase("join")){
+					if(args[1].equalsIgnoreCase(Nation[0])){
+						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "England" + ChatColor.GREEN + "!");
+					}
+					else if(args[1].equalsIgnoreCase(Nation[1])){
+						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "The Netherlands" + ChatColor.GREEN + "!");
+					}
+					else if(args[1].equalsIgnoreCase(Nation[2])){
+						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "Spain" + ChatColor.GREEN + "!");
+					}
+					else if(args[1].equalsIgnoreCase(Nation[3])){
+						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "France" + ChatColor.GREEN + "!");
+					}
+					else{
+						player.sendMessage(ChatColor.RED + "Invalid arguments, please choose a nation.");
+					}
 				}
 			}
 		}
