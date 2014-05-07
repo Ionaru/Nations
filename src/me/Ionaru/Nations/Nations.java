@@ -7,11 +7,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+//import org.bukkit.event.Listener;
+//import org.bukkit.scoreboard.Team;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Nations extends JavaPlugin implements Listener {
+public class Nations extends JavaPlugin {
 	public static Nations plugin;
 	public final Logger logger = Logger.getLogger("Minecraft");
 	 // console coloring made easy
@@ -26,6 +27,7 @@ public class Nations extends JavaPlugin implements Listener {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 	public static final String ANSI_BOLD = "\u001B[1m";
+		
 	
 	@EventHandler
 	public void onDisable() {
@@ -43,13 +45,11 @@ public class Nations extends JavaPlugin implements Listener {
 		}
 		else
 		{
-			//PluginDescriptionFile pdfFile = this.getDescription();
-			//this.logger.info(pdfFile.getName() + " " + pdfFile.getVersion() + " enabled");
 			this.logger.info(ANSI_GREEN + "Nations plugin enabled!" + ANSI_RESET);
 		}
 	}
 	
-	String Nation[] = {"England","Netherlands","Spain","France"};
+	String NationNum[] = {"England","Netherlands","Spain","France"};
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		Player player = (Player) sender;
@@ -94,32 +94,36 @@ public class Nations extends JavaPlugin implements Listener {
 				else if(args[0].equalsIgnoreCase("list")){
 					player.sendMessage("----" + ChatColor.GREEN + " Active nations " + ChatColor.WHITE + "----");
 					for(int counter = 0; counter <= 3; counter++){
-					player.sendMessage(ChatColor.AQUA + Nation[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + Nation[counter] + ChatColor.GREEN + " for more information.");
+					player.sendMessage(ChatColor.AQUA + NationNum[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + NationNum[counter] + ChatColor.GREEN + " for more information.");
 					}
 				}
 				else if(args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("join")){
 					player.sendMessage(ChatColor.RED + "Invalid arguments, please choose a nation.");
 				}
+				else if(args[0].equalsIgnoreCase("leave")){
+					Nation.removeFromNation(NationType.England, player);
+					//Removes player from whatever nation they are in
+				}
 			}
 			else if(args.length == 2){
 				//                     '/nation info' commands
 				if(args[0].equalsIgnoreCase("info")){
-					if(args[1].equalsIgnoreCase(Nation[0])){
+					if(args[1].equalsIgnoreCase(NationNum[0])){
 						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "England" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on England here...>");
 						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on English traits here...>");
 					}
-					else if(args[1].equalsIgnoreCase(Nation[1])){
+					else if(args[1].equalsIgnoreCase(NationNum[1])){
 						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "The Netherlands" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on The Netherlands here...>");
 						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Dutch traits here...>");
 					}
-					else if(args[1].equalsIgnoreCase(Nation[2])){
+					else if(args[1].equalsIgnoreCase(NationNum[2])){
 						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "Spain" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on Spain here...>");
 						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on Spanish traits here...>");
 					}
-					else if(args[1].equalsIgnoreCase(Nation[3])){
+					else if(args[1].equalsIgnoreCase(NationNum[3])){
 						player.sendMessage("----" + ChatColor.GREEN + " Nation info (" + ChatColor.AQUA + "France" + ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
 						player.sendMessage(ChatColor.AQUA + "General info" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<General info on France here...>");
 						player.sendMessage(ChatColor.AQUA + "Traits" + ChatColor.WHITE + " | " + ChatColor.GREEN + "<Info on French traits here...>");
@@ -130,16 +134,16 @@ public class Nations extends JavaPlugin implements Listener {
 				}
 				//					'/nation join' commands
 				else if(args[0].equalsIgnoreCase("join")){
-					if(args[1].equalsIgnoreCase(Nation[0])){
-						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "England" + ChatColor.GREEN + "!");
+					if(args[1].equalsIgnoreCase(NationNum[0])){
+						Nation.addToNation(NationType.England, player);		
 					}
-					else if(args[1].equalsIgnoreCase(Nation[1])){
-						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "The Netherlands" + ChatColor.GREEN + "!");
+					else if(args[1].equalsIgnoreCase(NationNum[1])){
+						Nation.addToNation(NationType.Netherlands, player);
 					}
-					else if(args[1].equalsIgnoreCase(Nation[2])){
+					else if(args[1].equalsIgnoreCase(NationNum[2])){
 						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "Spain" + ChatColor.GREEN + "!");
 					}
-					else if(args[1].equalsIgnoreCase(Nation[3])){
+					else if(args[1].equalsIgnoreCase(NationNum[3])){
 						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "France" + ChatColor.GREEN + "!");
 					}
 					else{

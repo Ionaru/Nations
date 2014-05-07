@@ -6,4 +6,4 @@
 
 
 plugin_enabled: true
-#Setting to false will disable the entire plugin.
+#Switch this option to 'false' to disable the entire plugin.
