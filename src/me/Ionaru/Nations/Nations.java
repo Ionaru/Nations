@@ -135,16 +135,22 @@ public class Nations extends JavaPlugin {
 				//					'/nation join' commands
 				else if(args[0].equalsIgnoreCase("join")){
 					if(args[1].equalsIgnoreCase(NationNum[0])){
-						Nation.addToNation(NationType.England, player);		
+						Nation.addToNation(NationType.England, player);	
+						//The player joins England
 					}
 					else if(args[1].equalsIgnoreCase(NationNum[1])){
 						Nation.addToNation(NationType.Netherlands, player);
+						//The player joins The Netherlands
 					}
 					else if(args[1].equalsIgnoreCase(NationNum[2])){
 						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "Spain" + ChatColor.GREEN + "!");
+						Nation.addToNation(NationType.Spain, player);
+						//The player joins Spain
 					}
 					else if(args[1].equalsIgnoreCase(NationNum[3])){
 						player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "France" + ChatColor.GREEN + "!");
+						Nation.addToNation(NationType.France, player);
+						//The player joins France
 					}
 					else{
 						player.sendMessage(ChatColor.RED + "Invalid arguments, please choose a nation.");
