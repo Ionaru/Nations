@@ -13,7 +13,7 @@ Nations
 
 ###Nations idea as seen on Bukkit forums
 ####Back story:
-Hi, I have been sitting on an idea for a server for a long time. It's going to be a role playing server where you play as 17th century explorers who set out and explore the "New World". I have the worlds and basics done but have been problems with getting the plugins to do exactly what I want. As I have absolutely zero experience with coding I am asking you guys for help. I will be able to provide a testing server if needed.
+Hi, I have been sitting on an idea for a server for a long time. It's going to be a role playing server where you play as a late-17th century explorer who set out to explore and colonize the "New World". I have the worlds and basics done but have been problems with getting the plugins to do exactly what I want. As I have absolutely zero experience with coding I am asking you guys for help. I will be able to provide a testing server if needed.
 
 ####What I want (short): 
 I'd for players to be able to choose a nation and then be able to make towns inside that nation. (reverse Towny). It would be really cool if the different nations could have little traits to them.
@@ -39,16 +39,17 @@ After players in a settlement are offline for a certain amount of time (configur
 A neutral ground should also exist, players cannot break blocks or pvp here. This is useful as a spawnpoint, global market with shops or minigame area.
 
 ####Main nations idea + traits:
-United Kingdom: Extra damage with an axe or sword in combat
-Netherlands: Gain a % of money each day (interest over current balance)
-France: Increase in mining speed
-Spain: Chance for extra drops while mining
-Additional nations + traits
-Germany: Chance to get one extra ingot in smelting
-Switzerland: Chance to get some money from killing mobs
-Italy: Extra loot from mobs
-Portugal: Extra damage with bow & arrow in combat
-Belgium: Extra food nourishment
+- United Kingdom: Extra damage with an axe or sword in combat
+- Netherlands: Gain a % of money each day (interest over current balance)
+- France: Increase in mining speed
+- Spain: Chance for extra drops while mining
+
+#####Additional nations + traits
+- Germany: Chance to get one extra ingot in smelting
+- Switzerland: Chance to get some money from killing mobs
+- Italy: Extra loot from mobs
+- Portugal: Extra damage with bow & arrow in combat
+- Belgium: Extra food nourishment
 
 ####Extra idea: Sieges
 In this idea, players can not destroy blocks of another nation's settlement, instead they can declare a siege. The town will get a big warning message that an enemy town is attacking it and they can either declare counter-siege or to defend.
@@ -56,9 +57,11 @@ In counter-siege both towns will have to kill as many town-members of the other 
 In defend the enemy destroys an X amount of blocks (not chests) in the town they declared a siege on. If the damage is not repaired in an X amount of time (2-3 days) by the defending side, the town will fall.
 
 ####Ideas for commands: 
-'/nation join <nation_name>' For new players to join a nation
-'/nation switch' Switch between nations
-'/nation settle' Create a town in your nation
+- '/nation' Show plugin commands or nation info when in a nation
+- '/nation join <nation_name>' For new players to join a nation
+- '/nation switch' Switch between nations
+- '/nation settle' Create a town in your nation
+- '/nation help' Show plugin commands
 
 ####Ideas for permissions:
 - nation.join.<nation>
