@@ -15,7 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Nations extends JavaPlugin {
 	public static Nations plugin;
 	public final Logger logger = Logger.getLogger("Minecraft");
-	 // console coloring made easy
+	
+	 // Colors for the console output
 	// example colored line: getLogger().info(ANSI_YELLOW + "TEXT" + ANSI_RESET);
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";

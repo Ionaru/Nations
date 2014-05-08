@@ -18,6 +18,7 @@ public class Nation {
 			player.sendMessage(ChatColor.RED + "You cannot join this nation because you already are a part of a nation.");
 			return;
 		}
+		//Adds players to the nation of their choice
 		switch (type){
 		case England:
 			NationEngland.add(player.getName());
