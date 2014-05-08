@@ -3,8 +3,14 @@ Nations
 #####The idea of this plugin is to create an active pvp environment between different nations.
 
 
-
-
+###TO-DO:
+- Save / load player-data to / from file
+- Give players in a nation certain traits
+- Players in the same nation can't pvp with each other
+- Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
+- Set nation spawn (admin command)
+- Settlement creation
+- Everything else
 
 ###Contributors
 [![Ionaru](http://www.gravatar.com/avatar/870462a1ed323405ffb155fd0f3b3258.png)]
