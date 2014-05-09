@@ -2,9 +2,16 @@ Nations
 ====================
 #####The idea of this plugin is to create an active pvp environment between different nations.
 
+###Current features:
+- Help-commands
+- Generate config file
+- Enable or disable the plugin though config file
+- Join nation through commands (resets on server restart)
+- Maven integration (No dependencies yet)
 
-###TO-DO:
+###To-do:
 - Save / load player-data to / from file
+- Set options in plugin config
 - Give players in a nation certain traits
 - Players in the same nation can't pvp with each other
 - Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
