@@ -73,7 +73,7 @@ public class CmdNations implements CommandExecutor {
     }
 
     private boolean nationList(CommandSender cs){
-        cs.sendMessage("----&f Active nations &f----");
+        cs.sendMessage(plugin.colorize("----&f Active nations &f----"));
         for(NationType n: NationType.values()){
             cs.sendMessage(plugin.colorize("&b" + n.getTitle() + "&f | &aUse &6/nation info " + n.getTitle() + "&a for more information."));
         }

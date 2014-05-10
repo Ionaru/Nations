@@ -1,7 +1,6 @@
 package me.ionaru.nations;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -9,19 +8,18 @@ import org.bukkit.entity.Player;
 
 public class Nation {
 
-    private static HashMap<String, NationType> nations = new HashMap<String, NationType>();
 
     public static void addToNation(NationType type, Player player){
         if(isInNation(player)){
             player.sendMessage(ChatColor.RED + "You cannot join this nation because you already are a part of a nation.");
             return;
         }
-        player.sendMessage(Nations.colorize("&aYou have joined" + type.getTitle()));
-        nations.put(player.getName(), type);
+        player.sendMessage(Nations.colorize("&aYou have joined " + type.getTitle()));
+        Nations.nations.put(player.getName(), type);
     }
 
     public static boolean isInNation(Player player){
-        return nations.containsKey(player.getName());
+        return Nations.nations.containsKey(player.getName());
     }
 
     public static void removeFromNation(Player player){
@@ -29,16 +27,16 @@ public class Nation {
             player.sendMessage(ChatColor.RED + "You cannot leave a nation because you are not in a nation.");
             return;
         }
-        nations.remove(player.getName());
+        Nations.nations.remove(player.getName());
     }
 
     public static void clearNations(){
-        nations.clear();
+        Nations.nations.clear();
     }
 
     public static List<String> getAllPlayersInNations(){
         List<String> players = new ArrayList<String>();
-        players.addAll(nations.keySet());
+        players.addAll(Nations.nations.keySet());
         return players;
     }
 
@@ -46,6 +44,6 @@ public class Nation {
         if (!isInNation(player)){
             return null;
         }
-        return nations.get(player.getName());
+        return Nations.nations.get(player.getName());
     }
 }

@@ -1,23 +1,18 @@
 package me.ionaru.nations;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-//import org.bukkit.event.Listener;
-//import org.bukkit.scoreboard.Team;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Nations extends JavaPlugin {
 
-    public static final String NationNum[] = {"England","Netherlands","Spain","France"};
+    public static HashMap<String, NationType> nations = new HashMap<String, NationType>();
+    //public static final String NationNum[] = {"England","Netherlands","Spain","France"};
 
     @EventHandler
     public void onDisable() {
@@ -27,6 +22,7 @@ public class Nations extends JavaPlugin {
     public void onEnable() {
         PluginManager pm = Bukkit.getPluginManager();
         getCommand("nations").setExecutor(new CmdNations(this));
+        createFolders();
         loadConfiguration();
         log("&av" + this.getDescription().getVersion() + " by EnderCrest and Ionaru enabled");
     }
@@ -35,6 +31,13 @@ public class Nations extends JavaPlugin {
         if (!getConfig().contains("color-logs")) getConfig().addDefault("color-logs", true);
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    public void createFolders(){
+        File folder = new File(this.getDataFolder() + File.separator + "data");
+        if(!folder.exists()){
+            folder.mkdir();
+        }
     }
 
     public static String colorize(String str){ return str.replaceAll("(?i)&([a-f0-9k-or])", "\u00a7$1");}
