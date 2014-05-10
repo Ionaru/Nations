@@ -1,0 +1,11 @@
+name: Nations
+main: me.ionaru.nations.Nations
+version: ${project.version}
+description: Nations plugin
+commands:
+    n:
+        description: Nations!
+    nation:
+        description: Nations!
+    nations:
+        description: Nations!
