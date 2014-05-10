@@ -84,8 +84,7 @@ public class CmdNations implements CommandExecutor {
         if(isConsole(cs)){
             return true;
         }
-        //TODO Redo the removal of the player
-        Nation.removeFromNation(NationType.ENGLAND, (Player)cs);
+        Nation.removeFromNation((Player)cs);
         return true;
     }
 
@@ -108,7 +107,6 @@ public class CmdNations implements CommandExecutor {
             return true;
         }
         Nation.addToNation(NationType.valueOf(nation), (Player) cs);
-        cs.sendMessage("You have been added to: " + nation);
         return true;
     }
 
