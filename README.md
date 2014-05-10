@@ -22,7 +22,8 @@ Nations
 ###Contributors
 [![Ionaru](http://www.gravatar.com/avatar/870462a1ed323405ffb155fd0f3b3258.png)]
 (https://github.com/Ionaru)
-
+[![endercrest](https://s.gravatar.com/avatar/110c2638b7505c44d04ac720bec943f9?s=80)]
+(https://github.com/endercrest)
 
 ###Nations idea as seen on Bukkit forums
 ####Back story:
