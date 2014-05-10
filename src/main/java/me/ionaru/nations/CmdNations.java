@@ -73,9 +73,9 @@ public class CmdNations implements CommandExecutor {
     }
 
     private boolean nationList(CommandSender cs){
-        cs.sendMessage("----" + ChatColor.GREEN + " Active nations " + ChatColor.WHITE + "----");
-        for(int counter = 0; counter <= 3; counter++){
-            cs.sendMessage(ChatColor.AQUA + plugin.NationNum[counter] + ChatColor.WHITE + " | " + ChatColor.GREEN + "Use " + ChatColor.GOLD + "/nation info " + plugin.NationNum[counter] + ChatColor.GREEN + " for more information.");
+        cs.sendMessage("----&f Active nations &f----");
+        for(NationType n: NationType.values()){
+            cs.sendMessage(plugin.colorize("&b" + n + "&f | &aUse &6/nation info " + n + "&a for more information."));
         }
         return true;
     }
@@ -85,27 +85,30 @@ public class CmdNations implements CommandExecutor {
             return true;
         }
         //TODO Redo the removal of the player
-        Nation.removeFromNation(NationType.England, (Player)cs);
+        Nation.removeFromNation(NationType.ENGLAND, (Player)cs);
         return true;
     }
 
     private boolean nationInfo(CommandSender cs, String[] args){
-        if(!NationType.contains(args[1])){
+        String nation = args[1].toUpperCase();
+        if(!NationType.contains(nation)){
             return true;
         }
-        cs.sendMessage("Coming Soon");
+        cs.sendMessage(plugin.colorize("---- &b" + nation + " &f----"));
+        cs.sendMessage(plugin.colorize("&6Traits: &a" + NationType.valueOf(nation).getTraits()));
         return true;
     }
 
     private boolean nationJoin(CommandSender cs, String[] args){
+        String nation = args[1].toUpperCase();
         if(isConsole(cs)){
             return true;
         }
-        if(!NationType.contains(args[1])){
+        if(!NationType.contains(nation)){
             return true;
         }
-        Nation.addToNation(NationType.valueOf(args[1]), (Player) cs);
-        cs.sendMessage("You have been added to: " + args[1]);
+        Nation.addToNation(NationType.valueOf(nation), (Player) cs);
+        cs.sendMessage("You have been added to: " + nation);
         return true;
     }
 

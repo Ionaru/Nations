@@ -20,19 +20,19 @@ public class Nation {
         }
         //Adds players to the nation of their choice
         switch (type){
-            case England:
+            case ENGLAND:
                 NationEngland.add(player.getName());
                 player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "England" + ChatColor.GREEN + "!");
                 break;
-            case Netherlands:
+            case NETHERLANDS:
                 NationNetherlands.add(player.getName());
                 player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "The Netherlands" + ChatColor.GREEN + "!");
                 break;
-            case Spain:
+            case SPAIN:
                 NationSpain.add(player.getName());
                 player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "Spain" + ChatColor.GREEN + "!");
                 break;
-            case France:
+            case FRANCE:
                 NationFrance.add(player.getName());
                 player.sendMessage(ChatColor.GREEN + "You successfully joined " + ChatColor.AQUA + "France" + ChatColor.GREEN + "!");
                 break;
@@ -50,7 +50,7 @@ public class Nation {
             return;
         }
         switch (type){
-            case England:
+            case ENGLAND:
                 NationEngland.remove(player.getName());
                 NationNetherlands.remove(player.getName());
                 NationSpain.remove(player.getName());
@@ -81,6 +81,6 @@ public class Nation {
         if (!isInNation(player)){
             return null;
         }
-        return (NationEngland.contains(player.getName()) ? NationType.England:NationType.Netherlands);
+        return (NationEngland.contains(player.getName()) ? NationType.ENGLAND:NationType.NETHERLANDS);
     }
 }
