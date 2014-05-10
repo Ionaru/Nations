@@ -1,17 +1,19 @@
 package me.ionaru.nations;
 
 public enum NationType {
-    ENGLAND(3, "Extra damage with an axe or sword in combat."),
-    NETHERLANDS(2, "Gain a % of money each day."),
-    SPAIN(1, "Chance of extra drops while mining."),
-    FRANCE(0, "Increase mining speed.");
+    ENGLAND(3,"England", "Extra damage with an axe or sword in combat."),
+    NETHERLANDS(2,"Netherlands", "Gain a % of money each day."),
+    SPAIN(1,"Spain", "Chance of extra drops while mining."),
+    FRANCE(0,"France", "Increase mining speed.");
 
     private int id;
+    private String title;
     private String traits;
 
-    NationType(int id, String traits){
+    NationType(int id, String title, String traits){
         this.id = id;
         this.traits = traits;
+        this.title = title;
     }
 
     public int getId(){
@@ -20,6 +22,10 @@ public enum NationType {
 
     public String getTraits(){
         return traits;
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public static boolean contains(String text){

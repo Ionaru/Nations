@@ -16,6 +16,7 @@ public class Nation {
             player.sendMessage(ChatColor.RED + "You cannot join this nation because you already are a part of a nation.");
             return;
         }
+        player.sendMessage(Nations.colorize("&aYou have joined" + type.getTitle()));
         nations.put(player.getName(), type);
     }
 

@@ -75,7 +75,7 @@ public class CmdNations implements CommandExecutor {
     private boolean nationList(CommandSender cs){
         cs.sendMessage("----&f Active nations &f----");
         for(NationType n: NationType.values()){
-            cs.sendMessage(plugin.colorize("&b" + n + "&f | &aUse &6/nation info " + n + "&a for more information."));
+            cs.sendMessage(plugin.colorize("&b" + n.getTitle() + "&f | &aUse &6/nation info " + n.getTitle() + "&a for more information."));
         }
         return true;
     }
@@ -93,8 +93,9 @@ public class CmdNations implements CommandExecutor {
         if(!NationType.contains(nation)){
             return true;
         }
-        cs.sendMessage(plugin.colorize("---- &b" + nation + " &f----"));
-        cs.sendMessage(plugin.colorize("&6Traits: &a" + NationType.valueOf(nation).getTraits()));
+        NationType type = NationType.valueOf(nation);
+        cs.sendMessage(plugin.colorize("---- &b" + type.getTitle() + " &f----"));
+        cs.sendMessage(plugin.colorize("&6Traits: &a" + type.getTraits()));
         return true;
     }
 
