@@ -1,4 +1,4 @@
-package me.ionaru.nations;
+package main.java.me.ionaru.nations;
 
 import java.io.File;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class Nations extends JavaPlugin {
         getCommand("nations").setExecutor(new CmdNations(this));
         createFolders();
         loadConfiguration();
-        log("&av" + this.getDescription().getVersion() + " by EnderCrest and Ionaru enabled");
+        log("&av" + this.getDescription().getVersion() + " enabled");
     }
 
     public void loadConfiguration() {

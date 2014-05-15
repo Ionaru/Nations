@@ -1,4 +1,4 @@
-package me.ionaru.nations;
+package main.java.me.ionaru.nations;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -95,6 +95,7 @@ public class CmdNations implements CommandExecutor {
         }
         NationType type = NationType.valueOf(nation);
         cs.sendMessage(plugin.colorize("---- &b" + type.getTitle() + " &f----"));
+        cs.sendMessage(plugin.colorize("&6Lore: &a" + type.getLore()));
         cs.sendMessage(plugin.colorize("&6Traits: &a" + type.getTraits()));
         return true;
     }

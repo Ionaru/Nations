@@ -1,4 +1,4 @@
-package me.ionaru.nations;
+package main.java.me.ionaru.nations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,7 @@ public class Nation {
             return;
         }
         Nations.nations.remove(player.getName());
+        player.sendMessage(ChatColor.GREEN + "You left your nation.");
     }
 
     public static void clearNations(){
