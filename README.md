@@ -55,16 +55,16 @@ Players should not be able to jump from one nation to another too often as that 
 A neutral ground should also exist, players cannot break blocks or pvp here. This is useful as a spawnpoint, global market with shops or minigame area. This could be another world (Disable Nations in certain worlds).
 
 ####Main nations idea + traits:
-- United Kingdom: Extra damage with an axe or sword in combat
+- England:Extra damage with bow & arrow in combat
 - Netherlands: Gain a % of money each day (interest over current balance)
-- France: Increase in mining speed
+- France: Bonus resistance from armor
 - Spain: Chance for extra drops while mining
 
 #####Additional nations + traits
 - Germany: Chance to get one extra ingot in smelting
 - Switzerland: Chance to get some money from killing mobs
 - Italy: Extra loot from mobs
-- Portugal: Extra damage with bow & arrow in combat
+- Portugal: Extra damage with swords and axes
 - Belgium: Extra food nourishment
 
 ####Extra idea: Sieges
