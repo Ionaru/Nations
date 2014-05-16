@@ -12,12 +12,14 @@ Nations
 ###To-do:
 Higher on the list means higher priority
 
-- Additional nation info in-game
-- Create config.yml with plugin-options
-- Set nation spawn (admin command)
-- Teleport command to nation capital for players (only in their active nation)
 - Disable pvp between players from the same nation
 - Give players in a nation certain traits
+- Disable nation 'jumping' (Admin command should be able to change a player's nation directly)
+- Set nation spawn (admin command)
+- Create config.yml with plugin-options
+- More admin commands
+- Teleport command to nation capital for players (only in their active nation)
+- Additional nation info in-game
 - Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
 - Settlements (Will be specified at a later date)
 - Everything else
