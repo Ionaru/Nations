@@ -29,14 +29,14 @@ public class CmdNations implements CommandExecutor {
                     }else{
                         return userHelp(cs);
                     }
-                }else if(args[0].equalsIgnoreCase("list")){
+                }else if(args[0].equalsIgnoreCase("list") || args[0].equalsIgnoreCase("info")){
                     return nationList(cs);
-                }else if(args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("join")){
+                }else if(args[0].equalsIgnoreCase("join")){
                     return invalidParameters(cs);
                 }else if(args[0].equalsIgnoreCase("leave")){
                     return nationLeave(cs);
-                }
-            }else if(args.length == 2) {
+                	}
+                }else if(args.length == 2) {
                 if (args[0].equalsIgnoreCase("info")) {
                     return nationInfo(cs, args);
                 }else if(args[0].equalsIgnoreCase("join")){
@@ -48,22 +48,22 @@ public class CmdNations implements CommandExecutor {
     }
 
     private boolean adminHelp(CommandSender cs){
-        cs.sendMessage("----" + ChatColor.GREEN + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
-        cs.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
-        cs.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation join <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Join a nation.");
+        cs.sendMessage("----" + ChatColor.AQUA + " Nations Help (" + ChatColor.RED + "Admin" +  ChatColor.GREEN + ") " + ChatColor.WHITE + "----");
+        cs.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.GOLD + "/n" + ChatColor.GREEN + "," + ChatColor.GOLD + " /nation" + ChatColor.GREEN + " and" + ChatColor.GOLD + " /nations");
+        cs.sendMessage(ChatColor.GOLD + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation join <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Join a nation.");
         return true;
     }
 
     private boolean userHelp(CommandSender cs){
-        cs.sendMessage("----" + ChatColor.GREEN + "Nations Help" + ChatColor.WHITE + "----");
-        cs.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.AQUA + "/n" + ChatColor.GREEN + "," + ChatColor.AQUA + " /nation" + ChatColor.GREEN + " and" + ChatColor.AQUA + " /nations");
-        cs.sendMessage(ChatColor.AQUA + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
-        cs.sendMessage(ChatColor.AQUA + "/Nation join <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Join a nation.");
+        cs.sendMessage("----" + ChatColor.AQUA + " Nations Help " + ChatColor.WHITE + "----");
+        cs.sendMessage(ChatColor.GREEN + "Accepted command aliases: " + ChatColor.GOLD + "/n" + ChatColor.GREEN + "," + ChatColor.GOLD + " /nation" + ChatColor.GREEN + " and" + ChatColor.GOLD + " /nations");
+        cs.sendMessage(ChatColor.GOLD + "/Nation" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows info on the Nations plugin commands.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation list" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays active nations.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation info <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Displays additional info on a nation.");
+        cs.sendMessage(ChatColor.GOLD + "/Nation join <Nation name>" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Join a nation.");
         return true;
     }
 
@@ -73,7 +73,7 @@ public class CmdNations implements CommandExecutor {
     }
 
     private boolean nationList(CommandSender cs){
-        cs.sendMessage(plugin.colorize("----&f Active nations &f----"));
+        cs.sendMessage(plugin.colorize("&f---- &bActive nations &f----"));
         for(NationType n: NationType.values()){
             cs.sendMessage(plugin.colorize("&b" + n.getTitle() + "&f | &aUse &6/nation info " + n.getTitle() + "&a for more information."));
         }
@@ -94,9 +94,11 @@ public class CmdNations implements CommandExecutor {
             return true;
         }
         NationType type = NationType.valueOf(nation);
-        cs.sendMessage(plugin.colorize("---- &b" + type.getTitle() + " &f----"));
+        cs.sendMessage(plugin.colorize("&f---- &6Nation info: &b" + type.getTitle() + " &f----"));
         cs.sendMessage(plugin.colorize("&6Lore: &a" + type.getLore()));
+        cs.sendMessage(plugin.colorize("----"));
         cs.sendMessage(plugin.colorize("&6Traits: &a" + type.getTraits()));
+        cs.sendMessage(plugin.colorize("----"));
         return true;
     }
 
