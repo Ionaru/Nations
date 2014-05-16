@@ -7,10 +7,11 @@ Nations
 - Generate config file
 - Join nation through commands (resets on server restart)
 - Maven integration (No dependencies yet)
+- Save / load player-data to / from file
 
 ###To-do:
 Higher on the list means higher priority
-- Save / load player-data to / from file
+
 - Additional nation info in-game
 - Create config.yml with plugin-options
 - Set nation spawn (admin command)
