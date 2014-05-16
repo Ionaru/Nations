@@ -14,11 +14,13 @@ Higher on the list means higher priority
 
 - Disable pvp between players from the same nation
 - Give players in a nation certain traits
-- Disable nation 'jumping' (Admin command should be able to change a player's nation directly)
-- Set nation spawn (admin command)
+- Disable nation 'jumping' (Admin command should be able to change a player's nation directly though)
+- Set nation spawn (admin command | /n set spawn <nation>)
+- Teleport command to nation capital for players (only in their active nation)
+- Build-protection in an area around the nation spawn. (Ability to override with WorldGuard? Useful for houses inside the capital)
 - Create config.yml with plugin-options
 - More admin commands
-- Teleport command to nation capital for players (only in their active nation)
+
 - Additional nation info in-game
 - Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
 - Settlements (Will be specified at a later date)
