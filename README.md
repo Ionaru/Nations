@@ -1,11 +1,11 @@
 Nations
 ====================
-#####The idea of this plugin is to create an active pvp environment between different groups of players (nations).
+#####The idea behind this plugin is to create an active pvp environment between different groups of players (nations).
 
 ###Current features:
 - Help-commands
 - Generate config file
-- Join nation through commands (resets on server restart)
+- Join nation through commands
 - Maven integration (No dependencies yet)
 - Save / load player-data to / from file
 
