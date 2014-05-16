@@ -20,7 +20,6 @@ Higher on the list means higher priority
 - Build-protection in an area around the nation spawn. (Ability to override with WorldGuard? Useful for houses inside the capital)
 - Create config.yml with plugin-options
 - More admin commands
-
 - Additional nation info in-game
 - Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
 - Settlements (Will be specified at a later date)
