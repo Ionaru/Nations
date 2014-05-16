@@ -30,8 +30,8 @@ Nations
 Hi, I have been sitting on an idea for a server for a long time. It's going to be a role playing server where you play as a late-17th century explorer who set out to explore and colonize the "New World". I have the worlds and basics done but have been problems with getting the plugins to do exactly what I want. As I have absolutely zero experience with coding I am asking you guys for help. I will be able to provide a testing server if needed.
 
 ####What I want (short): 
-I'd for players to be able to choose a nation and then be able to make towns inside that nation. (reverse Towny). It would be really cool if the different nations could have little traits to them.
-The nations would be in constant war with each other, allowing the players to engage in battle or even destroy blocks of the other nation (with the exception of the capital). Players should not be able to jump from one nation to another, so a limit to one nation-switch per week would be good.
+I want players to be able to choose a nation as their 'team' and then be able to make towns inside that nation. (reverse Towny). It would be really cool if the different nations could have little traits to them.
+The nations would be in constant war with each other, allowing the players to engage in battle or even destroy blocks of the other nation (with the exception of the nation capital).
 
 ####What I want (long):
 I have been working with Towny and Factions before, but they do not provide exactly what I need.
@@ -50,7 +50,9 @@ Players from other nations are able to destroy blocks in settlements belonging t
 
 After players in a settlement are offline for a certain amount of time (configurable?) the settlement will fall and players can then take everything.
 
-A neutral ground should also exist, players cannot break blocks or pvp here. This is useful as a spawnpoint, global market with shops or minigame area.
+Players should not be able to jump from one nation to another too often as that could be exploited, a limit of one switch every week sounds reasonable.
+
+A neutral ground should also exist, players cannot break blocks or pvp here. This is useful as a spawnpoint, global market with shops or minigame area. This could be another world (Disable Nations in certain worlds).
 
 ####Main nations idea + traits:
 - United Kingdom: Extra damage with an axe or sword in combat
