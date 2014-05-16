@@ -5,12 +5,13 @@ Nations
 ###Current features:
 - Help-commands
 - Generate config file
-- Join nation through commands (resets on server restart in process of saving)
+- Join nation through commands (resets on server restart)
 - Maven integration (No dependencies yet)
 
 ###To-do:
-- Save / load player-data to / from file(In the working)
-- Set options in plugin config(In the working)
+- Save / load player-data to / from file
+- Additional nation info in-game
+- Create config.yml with plugin-options
 - Give players in a nation certain traits
 - Players in the same nation can't pvp with each other
 - Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
