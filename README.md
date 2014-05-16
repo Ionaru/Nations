@@ -1,6 +1,6 @@
 Nations
 ====================
-#####The idea of this plugin is to create an active pvp environment between different nations.
+#####The idea of this plugin is to create an active pvp environment between different groups of players (nations).
 
 ###Current features:
 - Help-commands
