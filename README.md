@@ -9,14 +9,16 @@ Nations
 - Maven integration (No dependencies yet)
 
 ###To-do:
+Higher on the list means higher priority
 - Save / load player-data to / from file
 - Additional nation info in-game
 - Create config.yml with plugin-options
-- Give players in a nation certain traits
-- Players in the same nation can't pvp with each other
-- Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
 - Set nation spawn (admin command)
-- Settlement creation
+- Teleport command to nation capital for players (only in their active nation)
+- Disable pvp between players from the same nation
+- Give players in a nation certain traits
+- Nation name under holo-nametag. Alternatively: Nation tag + color in nametag
+- Settlements (Will be specified at a later date)
 - Everything else
 
 ###Contributors
