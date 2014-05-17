@@ -1,4 +1,4 @@
-package main.java.me.ionaru.nations;
+package me.ionaru.nations;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import me.ionaru.nations.listeners.PVPListener;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.PluginManager;
@@ -30,6 +31,7 @@ public class Nations extends JavaPlugin {
     public void onEnable() {
         PluginManager pm = Bukkit.getPluginManager();
         getCommand("nations").setExecutor(new CmdNations(this));
+        pm.registerEvents(new PVPListener(this), this);
         createFolders();
         loadConfiguration();
         log("&av" + this.getDescription().getVersion() + " enabled");

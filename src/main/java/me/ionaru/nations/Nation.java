@@ -1,4 +1,4 @@
-package main.java.me.ionaru.nations;
+package me.ionaru.nations;
 
 import java.io.File;
 import java.io.FileOutputStream;

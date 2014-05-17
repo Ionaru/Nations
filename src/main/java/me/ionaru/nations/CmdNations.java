@@ -1,4 +1,4 @@
-package main.java.me.ionaru.nations;
+package me.ionaru.nations;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
