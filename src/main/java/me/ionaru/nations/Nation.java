@@ -15,7 +15,7 @@ public class Nation extends JavaPlugin{
 
     public static void addToNation(NationType type, Player player){
         if(isInNation(player)){
-            player.sendMessage(ChatColor.RED + "You cannot join this nation because you already are a part of a nation.");
+            player.sendMessage(ChatColor.RED + "You cannot join this nation because you are already in a nation.");
             return;
         }
         player.sendMessage(Nations.colorize("&aYou have joined " + type.getTitle()));

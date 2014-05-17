@@ -111,6 +111,7 @@ public class CmdNations implements CommandExecutor {
             return true;
         }
         if(!NationType.contains(nation)){
+        	cs.sendMessage(plugin.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
             return true;
         }
         Nation.addToNation(NationType.valueOf(nation), (Player) cs);
