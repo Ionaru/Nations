@@ -93,6 +93,7 @@ public class CmdNations implements CommandExecutor {
     private boolean nationInfo(CommandSender cs, String[] args){
         String nation = args[1].toUpperCase();
         if(!NationType.contains(nation)){
+        	cs.sendMessage(plugin.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
             return true;
         }
         NationType type = NationType.valueOf(nation);
