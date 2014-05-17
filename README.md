@@ -8,11 +8,11 @@ Nations
 - Join nation through commands
 - Maven integration (No dependencies yet)
 - Save / load player-data to / from file
+- Disable pvp between players from the same nation
 
 ###To-do:
 Higher on the list means higher priority
 
-- Disable pvp between players from the same nation
 - Give players in a nation certain traits
 - Disable nation 'jumping' (Admin command should be able to change a player's nation directly though)
 - Set nation spawn (admin command | /n set spawn <nation>)
