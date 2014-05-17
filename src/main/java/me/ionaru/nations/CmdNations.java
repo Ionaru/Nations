@@ -35,7 +35,9 @@ public class CmdNations implements CommandExecutor {
                     return invalidParameters(cs);
                 }else if(args[0].equalsIgnoreCase("leave")){
                     return nationLeave(cs);
-                	}
+                }else{
+                	return nationErrorCommand(cs);
+                }
                 }else if(args.length == 2) {
                 if (args[0].equalsIgnoreCase("info")) {
                     return nationInfo(cs, args);
@@ -120,5 +122,10 @@ public class CmdNations implements CommandExecutor {
             return true;
         }
         return false;
+    }
+    
+    private boolean nationErrorCommand(CommandSender cs){
+    	cs.sendMessage(Nations.colorize("&cThis is not a valid Nations command!"));
+		return true;
     }
 }
