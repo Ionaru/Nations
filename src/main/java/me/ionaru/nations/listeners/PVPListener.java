@@ -1,6 +1,7 @@
-package me.ionaru.nations.listeners;
+package ionaru.nations.listeners;
 
-import me.ionaru.nations.Nations;
+import main.java.me.ionaru.nations.Nations;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,7 +28,7 @@ public class PVPListener implements Listener {
 
             if(Nations.nations.containsKey(player.getName()) && Nations.nations.containsKey(player2.getName())) {
                 if (Nations.nations.get(player.getName()).equals(Nations.nations.get(player2.getName()))) {
-                    player.sendMessage(Nations.colorize("&cYou can't attack someone from your own nation"));
+                    player2.sendMessage(Nations.colorize("&cYou can't attack someone from your own nation."));
                     event.setCancelled(true);
                 }
             }
