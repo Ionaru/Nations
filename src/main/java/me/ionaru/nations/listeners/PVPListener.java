@@ -1,6 +1,6 @@
-package ionaru.nations.listeners;
+package me.ionaru.nations.listeners;
 
-import main.java.me.ionaru.nations.Nations;
+import me.ionaru.nations.Nations;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

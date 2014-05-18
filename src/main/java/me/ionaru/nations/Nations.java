@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 import me.ionaru.nations.listeners.PVPListener;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.PluginManager;
