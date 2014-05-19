@@ -22,28 +22,7 @@ public class PVPListener implements Listener {
     public PVPListener(Nations nations) {
         plugin = nations;
     }
-
-    /*@EventHandler
-    public void onDamageEvent(EntityDamageByEntityEvent event){
-        Entity entity = event.getEntity();
-        Entity attacker = event.getDamager();
-
-        if(entity instanceof Player && attacker instanceof Player){
-            Player player = (Player) entity;
-            Player player2 = (Player) attacker;
-
-            if(Nations.nations.containsKey(player.getName()) && Nations.nations.containsKey(player2.getName())) {
-                if (Nations.nations.get(player.getName()).equals(Nations.nations.get(player2.getName()))) {
-                    player2.sendMessage(Nations.colorize("&cYou can't attack someone from your own nation."));
-                    event.setCancelled(true);
-                }
-            }
-        }
-    }*/
-    //private Map<String, Boolean> teams = new HashMap<String, Boolean>();
-    
-     
-    /* This method checks if two players are on the same team,
+       /* This method checks if two players are on the same team,
     and sends a warning to the attacker if they are. */
     private boolean sameTeam(Player victim, Player attacker) {
     	if(Nations.nations.containsKey(victim.getName()) && Nations.nations.containsKey(attacker.getName())) {
