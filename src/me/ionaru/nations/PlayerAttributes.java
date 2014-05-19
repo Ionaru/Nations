@@ -16,6 +16,11 @@ public class PlayerAttributes implements ConfigurationSerializable {
 	private NationType nation;
 	private String lastName; // last known name of the player
 	
+	public PlayerAttributes (NationType _nation, String name) {
+		nation = _nation;
+		lastName = name;
+	}
+	
 	public PlayerAttributes (Map<String,Object> map) {
 		lastName = (String) map.get("lastName");
 		nation = NationType.fromId((Integer) map.get("nation"));

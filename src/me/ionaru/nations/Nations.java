@@ -13,19 +13,26 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import me.ionaru.nations.listeners.EnglandListener;
 import me.ionaru.nations.listeners.PVPListener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
 
 public class Nations extends JavaPlugin {
 	
 	//HashMap<String, String> data;
 
-    private HashMap<String, PlayerAttributes> players;
+    /**
+     *  keeps track of all the player data we need, if the bukkit version is greater than 
+     *  build number 3052, the String will be a UUID, if not, it is the name of the player
+     */
+    private HashMap<String, PlayerAttributes> players; 
     
     private ConfigAccessor playerConfig;
     
@@ -42,22 +49,35 @@ public class Nations extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginManager pm = Bukkit.getPluginManager();
+        ConfigurationSerialization.registerClass(PlayerAttributes.class);
+        
         getCommand("nations").setExecutor(new CmdNations(this));
+        
         pm.registerEvents(new PVPListener(this), this);
+        pm.registerEvents(new EnglandListener(this), this);
+        
         loadConfiguration();
         log("&av" + this.getDescription().getVersion() + " enabled");        
     }
 
     @SuppressWarnings("unchecked")
 	public void loadConfiguration() {
+    	
     	playerConfig = new ConfigAccessor(this, "players.yml");
         playerConfig.saveDefaultConfig();
         
         saveDefaultConfig();
         
-        for(Entry <String,Object> e: playerConfig.getConfig().getConfigurationSection("players").getValues(false).entrySet()) {
-        	players.put(e.getKey(), (PlayerAttributes)e.getValue());
+        if(playerConfig.getClass() == null) {
+        	throw new NullPointerException("Wtf.");
         }
+        
+        if(playerConfig.getConfig().getConfigurationSection("players")!= null	) {
+        	for(Entry <String,Object> e: playerConfig.getConfig().getConfigurationSection("players").getValues(false).entrySet()) {
+            	players.put(e.getKey(), (PlayerAttributes)e.getValue());
+            }
+        }
+        
     }
 
     public void createFolders(){
@@ -116,7 +136,7 @@ public class Nations extends JavaPlugin {
             return;
         }
         player.sendMessage(Nations.colorize("&aYou have joined " + type.getTitle()));
-        players.get(player.getName()).setNation(type);
+        players.put(player.getName(), new PlayerAttributes(type,player.getName()));
     }
 
     public boolean isInNation(Player player){
