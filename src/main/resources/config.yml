@@ -1,0 +1,9 @@
+# Default configuration file for Nations plugin.
+
+
+
+
+
+
+plugin_enabled: true
+#Switch this option to 'false' to disable the entire plugin.
