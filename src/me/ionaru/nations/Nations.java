@@ -55,9 +55,11 @@ public class Nations extends JavaPlugin {
         
         pm.registerEvents(new PVPListener(this), this);
         pm.registerEvents(new EnglandListener(this), this);
+        pm.registerEvents(new SpainListener(this), this);        
         
         loadConfiguration();
-        log("&av" + this.getDescription().getVersion() + " enabled");        
+        
+        //log("&av" + this.getDescription().getVersion() + " enabled");        
     }
 
     @SuppressWarnings("unchecked")
@@ -73,7 +75,7 @@ public class Nations extends JavaPlugin {
             	players.put(e.getKey(), (PlayerAttributes)e.getValue());
             }
         }
-        if( players == null) {
+        if (players == null) {
         	players = new HashMap<String, PlayerAttributes>();
         }
         
