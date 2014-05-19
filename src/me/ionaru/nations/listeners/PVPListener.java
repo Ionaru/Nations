@@ -1,6 +1,8 @@
 package me.ionaru.nations.listeners;
 
 import me.ionaru.nations.Nations;
+
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,6 +33,25 @@ public class PVPListener implements Listener {
                     event.setCancelled(true);
                 }
             }
+        }
+        
+        // make sure they're not trying to hurt their fellow countrymen with an arrow
+        else if (entity instanceof Player && attacker instanceof Arrow) {
+        	Arrow arrow = (Arrow)entity;
+
+        	if(arrow.getShooter() instanceof Player) {
+        		Player shooter = (Player) arrow.getShooter();
+        		if(entity instanceof Player) {
+        			Player victim = (Player) event.getEntity();
+        			if(parent.isInNation(victim.getName()) && parent.isInNation(shooter)) {
+        				if(parent.getNationType(victim).equals(parent.getNationType(shooter))) {
+        					shooter.sendMessage(Nations.colorize("&cYou can't attack someone from your own nation"));
+        					event.setCancelled(true);
+        				}
+                	}
+        		}
+        	}
+        		  
         }
     }
 }

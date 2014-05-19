@@ -68,14 +68,13 @@ public class Nations extends JavaPlugin {
         
         saveDefaultConfig();
         
-        if(playerConfig.getClass() == null) {
-        	throw new NullPointerException("Wtf.");
-        }
-        
         if(playerConfig.getConfig().getConfigurationSection("players")!= null	) {
         	for(Entry <String,Object> e: playerConfig.getConfig().getConfigurationSection("players").getValues(false).entrySet()) {
             	players.put(e.getKey(), (PlayerAttributes)e.getValue());
             }
+        }
+        if( players == null) {
+        	players = new HashMap<String, PlayerAttributes>();
         }
         
     }

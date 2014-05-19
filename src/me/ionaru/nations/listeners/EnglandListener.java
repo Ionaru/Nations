@@ -20,15 +20,13 @@ public class EnglandListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onBowHit(EntityDamageByEntityEvent e) {
-		if (e.getDamager() instanceof Arrow)
-        {
+		if (e.getDamager() instanceof Arrow) {
             Arrow arrow = (Arrow) e.getDamager();
-            if (arrow.getShooter() instanceof Player)
-            {
+            if (arrow.getShooter() instanceof Player) {
             	if(parent.isInNation((Player)arrow.getShooter())) {
             		if(parent.getNationType((Player)arrow.getShooter()).equals(NationType.ENGLAND)) {
             			// extra 2 hearts damage
-            			e.setDamage(e.getDamage() +100);
+            			e.setDamage(e.getDamage() + 4);
             		}
             	}
             }
