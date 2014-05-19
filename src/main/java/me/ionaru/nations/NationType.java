@@ -22,6 +22,24 @@ public enum NationType {
         return id;
     }
     
+    public static NationType fromId (int id) {
+    	if(id == 3) {
+    		return ENGLAND;
+    	}
+    	else if (id == 2) {
+    		return NETHERLANDS;
+    	}
+    	else if (id == 1) {
+    		return SPAIN;
+    	}
+    	else if (id == 0) {
+    		return FRANCE;
+    	}
+    	else {
+    		return null;
+    	}
+    }
+    
     public String getTitle(){
         return title;
     }

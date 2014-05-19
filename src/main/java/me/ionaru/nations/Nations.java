@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +18,6 @@ import me.ionaru.nations.listeners.PVPListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,14 +25,17 @@ public class Nations extends JavaPlugin {
 	
 	//HashMap<String, String> data;
 
-    private HashMap<String, NationType> nations = new HashMap<String, NationType>();
+    private HashMap<String, PlayerAttributes> players;
+    
+    private ConfigAccessor playerConfig;
+    
     //public static final String NationNum[] = {"England","Netherlands","Spain","France"};
 
     @Override
     public void onDisable() {
     	log("&cv" + this.getDescription().getVersion() + " disabled");
-    	save(nations, new File(getDataFolder(), "data/data.dat"));
-
+    	//save(nations, new File(getDataFolder(), "data/data.dat"));
+    	savePlayers();
     }
     
     
@@ -42,18 +45,18 @@ public class Nations extends JavaPlugin {
         getCommand("nations").setExecutor(new CmdNations(this));
         pm.registerEvents(new PVPListener(this), this);
         loadConfiguration();
-        log("&av" + this.getDescription().getVersion() + " enabled");
-        
+        log("&av" + this.getDescription().getVersion() + " enabled");        
     }
 
     @SuppressWarnings("unchecked")
 	public void loadConfiguration() {
-        if (!getConfig().contains("color-logs")) getConfig().addDefault("color-logs", true);
-        getConfig().options().copyDefaults(true);
-        saveConfig();
-        nations = (HashMap<String, NationType>) load(new File(getDataFolder(), "data/data.dat"));
-        if (nations == null){
-        	nations = new HashMap<String, NationType>();
+    	playerConfig = new ConfigAccessor(this, "players.yml");
+        playerConfig.saveDefaultConfig();
+        
+        saveDefaultConfig();
+        
+        for(Entry <String,Object> e: playerConfig.getConfig().getConfigurationSection("players").getValues(false).entrySet()) {
+        	players.put(e.getKey(), (PlayerAttributes)e.getValue());
         }
     }
 
@@ -77,7 +80,11 @@ public class Nations extends JavaPlugin {
         }
     }
     
-    public void save(Object o, File f){
+    public void savePlayers () {
+    	playerConfig.getConfig().set("players", players);
+    }
+    
+    /*public void save(Object o, File f){
     	try{
     		if(!f.exists())
     			f.createNewFile();
@@ -100,7 +107,7 @@ public class Nations extends JavaPlugin {
     	} catch(Exception e){
 			return null;
     	}
-    }
+    }*/
     
     
     public void addToNation(NationType type, Player player){
@@ -109,15 +116,15 @@ public class Nations extends JavaPlugin {
             return;
         }
         player.sendMessage(Nations.colorize("&aYou have joined " + type.getTitle()));
-        nations.put(player.getName(), type);
+        players.get(player.getName()).setNation(type);
     }
 
     public boolean isInNation(Player player){
-        return nations.containsKey(player.getName());
+        return players.containsKey(player.getName());
     }
     
     public boolean isInNation(String player){
-        return nations.containsKey(player);
+        return players.containsKey(player);
     }
 
     public void removeFromNation(Player player){
@@ -125,25 +132,29 @@ public class Nations extends JavaPlugin {
             player.sendMessage(ChatColor.RED + "You cannot leave a nation because you are not in a nation.");
             return;
         }
-        nations.remove(player.getName());
+        players.remove(player.getName());
         player.sendMessage(ChatColor.GREEN + "You left your nation.");
     }
 
     public void clearNations(){
-        nations.clear();
+        players.clear();
     }
 
     public List<String> getAllPlayersInNations(){
-        List<String> players = new ArrayList<String>();
-        players.addAll(nations.keySet());
-        return players;
+        List<String> temp = new ArrayList<String>();
+        temp.addAll(players.keySet());
+        return temp;
     }
 
     public NationType getNationType(Player player){
         if (!isInNation(player)){
             return null;
         }
-        return nations.get(player.getName());
+        return players.get(player.getName()).getNation();
+    }
+    
+    public PlayerAttributes getAttributes (Player ply) {
+    	return players.get(ply.getName());
     }
     
     public static Integer getBukkitBuild() {
