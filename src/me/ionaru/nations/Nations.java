@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.logging.Level;
@@ -15,6 +16,7 @@ import java.util.regex.Pattern;
 
 import me.ionaru.nations.listeners.EnglandListener;
 import me.ionaru.nations.listeners.PVPListener;
+import me.ionaru.nations.listeners.SpainListener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -58,6 +60,8 @@ public class Nations extends JavaPlugin {
         pm.registerEvents(new SpainListener(this), this);        
         
         loadConfiguration();
+        
+        getServer().getScheduler().scheduleSyncRepeatingTask(this, new FrenchRunnable(this), 100L, 50L);        
         
         //log("&av" + this.getDescription().getVersion() + " enabled");        
     }
@@ -155,6 +159,18 @@ public class Nations extends JavaPlugin {
         }
         players.remove(player.getName());
         player.sendMessage(ChatColor.GREEN + "You left your nation.");
+    }
+    
+    public List<String> getPlayersInNation (NationType nation) {
+    	List<String> temp = new LinkedList<String>();
+    	
+    	for(Entry <String,PlayerAttributes> e: players.entrySet()) {
+    		if(e.getValue().getNation().equals(nation)) {
+    			temp.add(e.getKey());
+    		}
+    	}
+    	
+    	return temp;    	
     }
 
     public void clearNations(){

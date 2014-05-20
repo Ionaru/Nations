@@ -1,7 +1,10 @@
-package me.ionaru.nations;
+package me.ionaru.nations.listeners;
 
 import java.util.Random;
 import java.util.logging.Level;
+
+import me.ionaru.nations.NationType;
+import me.ionaru.nations.Nations;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
