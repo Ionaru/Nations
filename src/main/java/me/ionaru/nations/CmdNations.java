@@ -1,5 +1,9 @@
 package me.ionaru.nations;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,7 +12,7 @@ import org.bukkit.entity.Player;
 
 public class CmdNations implements CommandExecutor {
 
-    Nations plugin;
+    private Nations plugin;
 
     public CmdNations(Nations plugin){
         this.plugin = plugin;

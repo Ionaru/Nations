@@ -25,11 +25,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Nations extends JavaPlugin {
 	
-	//HashMap<String, String> data;
+	
+	//Stuff that's broken
+	/*HashMap<String, String> data;
 	
 	private HashMap<String, PlayerAttributes> players; 
     
-    private ConfigAccessor playerConfig;
+    private ConfigAccessor playerConfig;*/
 
     public static HashMap<String, NationType> nations = new HashMap<String, NationType>();
     //public static final String NationNum[] = {"England","Netherlands","Spain","France"};
@@ -42,12 +44,22 @@ public class Nations extends JavaPlugin {
     }
     @EventHandler
     public void onEnable() {
+    	// Check if plugin needs to be running
+    	if(getConfig().getString("plugin_enabled") == "false"){
+			log("&c'Plugin_enabled' is set to false in Nations config. Disabling plugin!");
+			// Will not load the plugin any further
+			this.getServer().getPluginManager().disablePlugin(this);
+		}
+		else
+		{
+			// Load plugin normally
         PluginManager pm = Bukkit.getPluginManager();
         getCommand("nations").setExecutor(new CmdNations(this));
         pm.registerEvents(new PVPListener(this), this);
         createFolders();
         loadConfiguration();
         log("&av" + this.getDescription().getVersion() + " enabled");
+		}
         
     }
 
@@ -102,7 +114,10 @@ public class Nations extends JavaPlugin {
 			return null;
 	}
     }
-    public void addToNation(NationType type, Player player){
+    
+    // Code copied back to Nation class
+    
+ /*   public void addToNation(NationType type, Player player){
         if(isInNation(player)){
             player.sendMessage(ChatColor.RED + "You cannot join this nation because you are already in a nation.");
             return;
@@ -171,5 +186,5 @@ public class Nations extends JavaPlugin {
 		}
 
 		return null;
-	}   
+	}   */
 }

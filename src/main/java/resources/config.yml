@@ -1,0 +1,13 @@
+# Default configuration file for Nations plugin.
+
+
+
+#######-- Main plugin settings --########
+
+plugin_enabled: true
+# If set to 'false' this will disable the entire plugin and all its features.
+
+color-logs: true
+# Will enable or disable the colorful messages in the Minecraft console.
+
+#######--------------------------########
