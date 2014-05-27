@@ -14,6 +14,7 @@ Nations
 Higher on the list means higher priority
 
 - Give players in a nation certain traits
+- Support for UUIDs
 - Disable nation 'jumping' (Admin command should be able to change a player's nation directly though)
 - Set nation spawn (admin command | /n set spawn <nation>)
 - Teleport command to nation capital for players (only in their active nation)
