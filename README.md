@@ -13,11 +13,12 @@ Nations
 ###To-do:
 Higher on the list means higher priority
 
-- Give players in a nation certain traits
+- Nation traits
 - Support for UUIDs
 - Disable nation 'jumping' (Admin command should be able to change a player's nation directly though)
 - Set nation spawn (admin command | /n set spawn <nation>)
 - Teleport command to nation capital for players (only in their active nation)
+- Optimize saving / loading
 - Build-protection in an area around the nation spawn. (Ability to override with WorldGuard? Useful for houses inside the capital)
 - Create config.yml with plugin-options
 - More admin commands
