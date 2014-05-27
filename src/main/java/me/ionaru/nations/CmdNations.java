@@ -1,9 +1,5 @@
 package me.ionaru.nations;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.UUID;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,10 +8,8 @@ import org.bukkit.entity.Player;
 
 public class CmdNations implements CommandExecutor {
 
-    private Nations plugin;
-
     public CmdNations(Nations plugin){
-        this.plugin = plugin;
+    	//Constructor
     }
 
     public boolean onCommand(CommandSender cs, Command cmd, String label, String[] args){
@@ -78,10 +72,10 @@ public class CmdNations implements CommandExecutor {
         return true;
     }
 
-    private boolean nationList(CommandSender cs){
-        cs.sendMessage(plugin.colorize("&f---- &bActive nations &f----"));
+	private boolean nationList(CommandSender cs){
+        cs.sendMessage(Nations.colorize("&f---- &bActive nations &f----"));
         for(NationType n: NationType.values()){
-            cs.sendMessage(plugin.colorize("&b" + n.getTitle() + "&f | &aUse &6/nation info " + n.getTitle() + "&a for more information."));
+            cs.sendMessage(Nations.colorize("&b" + n.getTitle() + "&f | &aUse &6/nation info " + n.getTitle() + "&a for more information."));
         }
         return true;
     }
@@ -94,28 +88,28 @@ public class CmdNations implements CommandExecutor {
         return true;
     }
 
-    private boolean nationInfo(CommandSender cs, String[] args){
+	private boolean nationInfo(CommandSender cs, String[] args){
         String nation = args[1].toUpperCase();
         if(!NationType.contains(nation)){
-        	cs.sendMessage(plugin.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
+        	cs.sendMessage(Nations.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
             return true;
         }
         NationType type = NationType.valueOf(nation);
-        cs.sendMessage(plugin.colorize("&f---- &6Nation info: &b" + type.getTitle() + " &f----"));
-        cs.sendMessage(plugin.colorize("&6Lore: &a" + type.getLore()));
-        cs.sendMessage(plugin.colorize("----"));
-        cs.sendMessage(plugin.colorize("&6Traits: &a" + type.getTraits()));
-        cs.sendMessage(plugin.colorize("----"));
+        cs.sendMessage(Nations.colorize("&f---- &6Nation info: &b" + type.getTitle() + " &f----"));
+        cs.sendMessage(Nations.colorize("&6Lore: &a" + type.getLore()));
+        cs.sendMessage(Nations.colorize("----"));
+        cs.sendMessage(Nations.colorize("&6Traits: &a" + type.getTraits()));
+        cs.sendMessage(Nations.colorize("----"));
         return true;
     }
 
-    private boolean nationJoin(CommandSender cs, String[] args){
+	private boolean nationJoin(CommandSender cs, String[] args){
         String nation = args[1].toUpperCase();
         if(isConsole(cs)){
             return true;
         }
         if(!NationType.contains(nation)){
-        	cs.sendMessage(plugin.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
+        	cs.sendMessage(Nations.colorize("&cThat nation does not exist, use &6/nation list &cto see the active nations!"));
             return true;
         }
         Nation.addToNation(NationType.valueOf(nation), (Player) cs);
@@ -133,5 +127,8 @@ public class CmdNations implements CommandExecutor {
     private boolean nationErrorCommand(CommandSender cs){
     	cs.sendMessage(Nations.colorize("&cThis is not a valid Nations command!"));
 		return true;
+    }
+    public static boolean isInNation(Player player){
+        return Nations.nations.containsKey(player.getName());
     }
 }

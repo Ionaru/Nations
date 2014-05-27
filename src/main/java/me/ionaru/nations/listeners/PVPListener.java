@@ -3,7 +3,6 @@ package me.ionaru.nations.listeners;
 import me.ionaru.nations.Nations;
 
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -11,16 +10,13 @@ import org.bukkit.entity.ThrownPotion;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.potion.PotionEffect;
 
 public class PVPListener implements Listener {
 
-    Nations plugin;
-
     public PVPListener(Nations nations) {
-        plugin = nations;
+    	//Constructor
     }
        /* This method checks if two players are on the same team,
     and sends a warning to the attacker if they are. */
@@ -34,7 +30,8 @@ public class PVPListener implements Listener {
         return false;
     }
      
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent e) { // Triggered whenever an entity damages another entity
         if(!(e.getEntity() instanceof Player)) {
             // Victim is not a player
@@ -86,7 +83,8 @@ public class PVPListener implements Listener {
         }
     }
      
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onPotionSplash(PotionSplashEvent e) {
         // Is this a dangerous potion? (Probably not the most efficient way to check this. Tips?)
         boolean cancel = true;
