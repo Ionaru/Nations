@@ -32,6 +32,8 @@ Higher on the list means higher priority
 (https://github.com/Ionaru)
 [![endercrest](https://s.gravatar.com/avatar/110c2638b7505c44d04ac720bec943f9?s=80)]
 (https://github.com/endercrest)
+[![mythbusterma](http://i.imgur.com/k11WQDw.png)]
+(https://github.com/mythbusterma)
 
 ###Nations idea as seen on Bukkit forums
 ####Back story:
