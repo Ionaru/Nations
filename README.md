@@ -13,8 +13,9 @@ Nations
 ###To-do:
 Higher on the list means higher priority
 
-- Nation traits
 - Support for UUIDs
+- Update to latest Bukkit beta build (1.7.9)
+- Nation traits
 - Disable nation 'jumping' (Admin command should be able to change a player's nation directly though)
 - Set nation spawn (admin command | /n set spawn <nation>)
 - Teleport command to nation capital for players (only in their active nation)
